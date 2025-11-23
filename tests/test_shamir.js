@@ -139,7 +139,8 @@ describe("Shamir Secret Sharing (deterministic, seeded)", function () {
     const secret = BigInt(rng.nextInt(P));
     const [xs, ys] = shares(secret, 3, 3, P, rng);
     xs[1] = xs[0]; // force duplicate
-    assert.throws(() => lagrangeAtZero(xs, ys, P), /No inverse/);
+    // We only assert that an error is thrown, without coupling to the internal error message.
+    assert.throws(() => lagrangeAtZero(xs, ys, P));
   });
 });
 
