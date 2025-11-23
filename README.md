@@ -47,3 +47,7 @@ Please use the following Bitcoin address for bounty distribution:
 - Add metadata (field, threshold, index, checksum/MAC) to shares
 - Implement constant-time field operations
 
+## License
+
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
+
