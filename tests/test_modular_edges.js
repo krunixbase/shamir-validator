@@ -36,3 +36,4 @@ describe('Modular edge cases in Shamir Secret Sharing', () => {
     expect(recovered.equals(secret)).toBe(true)
   })
 })
+secret = 0, p - 1, x_i = 0, 1, p-1
