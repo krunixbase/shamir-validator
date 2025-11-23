@@ -114,6 +114,26 @@ describe("Shamir Secret Sharing (deterministic, seeded)", function () {
     }
   });
 
+  it("fails to reconstruct secret when a share is tampered", function () {
+    const rng = new SeededRNG(SEED);
+    const secret = BigInt(rng.nextInt(P));
+    const [xs, ys] = shares(secret, 4, 6, P, rng);
+
+    // Take a valid threshold-sized subset
+    const subset = [0, 1, 2, 3];
+    const subX = subset.map(i => xs[i]);
+    const subY = subset.map(i => ys[i]);
+
+    // Tamper with one share in the subset
+    const tamperedSubY = subY.slice();
+    tamperedSubY[0] = (tamperedSubY[0] + 1n) % P;
+
+    const rec = lagrangeAtZero(subX, tamperedSubY, P);
+
+    // With a tampered share, reconstruction should not yield the original secret
+    assert.notStrictEqual(rec, secret);
+  });
+
   it("detects duplicate x values", function () {
     const rng = new SeededRNG(SEED);
     const secret = BigInt(rng.nextInt(P));
