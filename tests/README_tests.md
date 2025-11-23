@@ -10,7 +10,7 @@ This directory contains validation tests for the Shamir Secret Sharing algorithm
 - `test_secret_edges.py` – secret threshold values ​​(`b""`, `b"\xff"*100`)
 - `test_tampered_share.py` – test with a tampered share
 
-**Running:**
+Running:
 ```bash
 pytest tests/
 
@@ -19,7 +19,7 @@ pytest tests/
 ## 🧪 Message Tests (`SeededMsg`)
 - `msg.spec.ts` – tests the deterministic, stateful operation of the `SeededMsg` message generator.
 
-**Test Description:**
+Test Description:
 ``ts
 test('SeededMsg is deterministic', () => {
 const rng1 = new SeededMsg(123456)
