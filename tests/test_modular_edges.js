@@ -37,3 +37,4 @@ describe('Modular edge cases in Shamir Secret Sharing', () => {
   })
 })
 secret = 0, p - 1, x_i = 0, 1, p-1
+secret = 0p - 1x_i = 0, 1, p-1
