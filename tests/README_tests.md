@@ -13,3 +13,17 @@ This directory contains validation tests for the Shamir Secret Sharing algorithm
 **Running:**
 ```bash
 pytest tests/
+
+---
+
+## 🧪 Message Tests (`SeededMsg`)
+- `msg.spec.ts` – tests the deterministic, stateful operation of the `SeededMsg` message generator.
+
+**Test Description:**
+``ts
+test('SeededMsg is deterministic', () => {
+const rng1 = new SeededMsg(123456)
+const rng2 = new SeededMsg(123456)
+expect(rng1.next()).toEqual(rng2.next()) // identical first result
+expect(rng1.next()).not.toEqual(rng2.next()) // different subsequent results
+})
