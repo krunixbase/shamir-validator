@@ -34,9 +34,7 @@ S = \sum_{i=1}^{t} y_i \cdot \prod_{\substack{j=1 \\ j \neq i}}^{t} \frac{-x_j}{
 - Optional: deploy `summary.html` via GitHub Pages
 
 ## 💰 Bounty Address
-
 Please use the following Bitcoin address for bounty distribution:
-
 **bc1q4fv9w2pwpgqyp0gzt20c6n6m4mxs9yga2qgm9f**
 
 ## 🔒 Recommendations
