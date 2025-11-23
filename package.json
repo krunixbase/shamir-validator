@@ -1,9 +1,14 @@
 {
+  "name": "shamir-validation-suite",
+  "version": "1.0.0",
+  "description": "Validation and audit suite for Shamir Secret Sharing",
   "scripts": {
-    "test": "jest"
+    "test": "jest tests/"
   },
   "devDependencies": {
-    "jest": "^26.6.3",
-    "ncm": "ncm"
+    "jest": "^26.6.3"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
