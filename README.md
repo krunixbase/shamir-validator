@@ -27,7 +27,7 @@ S = \sum_{i=1}^{t} y_i \cdot \prod_{\substack{j=1 \\ j \neq i}}^{t} \frac{-x_j}{
 
 ## CI/CD and Reports
 
-- GitHub Actions workflow runs Python and JS tests across matrix seeds.
+- GitHub Actions workflow runs Python and JS tests across multiple seeds.
 - Reports generated:
   - `summary.md` – Markdown PASS/FAIL table
   - `summary.html` – color-coded HTML table
