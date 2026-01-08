@@ -1,5 +1,6 @@
 **API Status:** Frozen (v1.x)
 
+![Validation Suite](https://github.com/krunixbase/shamir-sss-validation/actions/workflows/validation.yml/badge.svg)
 
 # shamir-sss-validation
 
