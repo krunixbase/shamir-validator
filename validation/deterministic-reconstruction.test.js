@@ -21,6 +21,7 @@ describe('Deterministic reconstruction with threshold k', () => {
       reconstructed,
       secret,
       'Secret must be reconstructed exactly with k shares'
+      
     );
   });
 });
