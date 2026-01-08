@@ -1,3 +1,6 @@
+**API Status:** Frozen (v1.x)
+
+
 # shamir-sss-validation
 
 Formal validation and deterministic verification suite for Shamir Secret Sharing (SSS) implementations.
