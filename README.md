@@ -290,6 +290,6 @@ The old repositories remain available for historical reference.
 
 ## Can I use this project in commercial software?
 
-Yes, but only under the terms of GPL‑3.0, which requires that derivative works remain open‑source under the same license.
+- Yes, but only under the terms of GPL‑3.0, which requires that derivative works remain open‑source under the same license.
 
 ---
