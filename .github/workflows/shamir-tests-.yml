@@ -1,0 +1,50 @@
+name: Shamir Secret Sharing Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-js:
+    runs-on: ubuntu-latest
+    ens:
+      seed: 1337
+    steps:
+      - uses: actions/checkout@v3
+     - run: python summary.py
+
+  test-py:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        seed: [1337, 42, 2025, 9001, 314159]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with: { python-version: '3.11' }
+      - run: pip install pytest
+      - run: |
+          echo "Running Python tests with SEED=${{ matrix.seed }}"
+          pytest -v --seed=${{ matrix.seed }} tests/test_shamir.py
+
+  summary:
+    runs-on: ubuntu-latest
+    needs: [test-js, test-py]
+    steps:
+      - uses: actions/checkout@v3
+      - run: python summary.py
+      - uses: actions/upload-artifact@v3
+        with:
+          name: Shamir-Test-Summary
+          path: summary.md
+
+  summary-html:
+    runs-on: ubuntu-latest
+    env:
+      seed: 1337
+     steps:
+      - uses: actions/checkout@v3
+      - run: python summary_html.py
+      
