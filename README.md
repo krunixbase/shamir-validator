@@ -6,10 +6,41 @@
 ![Tests](https://img.shields.io/badge/Tests-Python%20%2B%20JavaScript-success)
 ![Status](https://img.shields.io/badge/Project-Unified%20Release%20v1.0.0-orange)
 ![Topics](https://img.shields.io/badge/Topics-SSS%2C%20Cryptography%2C%20Validator-lightgrey)
+![Tests](https://github.com/krunixbase/shamir-validator/actions/workflows/tests.yml/badge.svg)
 
 Shamir Validator is a deterministic, cross‑language validation framework for implementations of Shamir’s Secret Sharing (SSS). It provides reference implementations, mathematical modules, deterministic test vectors, cross‑language test suites, fuzzing, and formal documentation to ensure that SSS implementations behave correctly, consistently, and securely across environments.
 
 The project unifies multiple earlier repositories into a single, coherent structure designed for cryptographic audits, reproducible research, and high‑assurance engineering.
+
+## A reference implementation and validation suite for **Shamir’s Secret Sharing** in Python and JavaScript. The project provides:
+
+- a correct and test‑verified implementation of Shamir’s Secret Sharing,
+
+- full Python test suite (pytest),
+
+- edge‑case validation,
+
+- compatibility with large prime fields,
+
+- cross‑language consistency between Python and JavaScript versions.
+
+---
+
+## Features
+
+- **split(secret, t, n)** — split a secret into *n* shares with threshold *t*
+
+- **recover(shares)** — reconstruct the secret from any *t* valid shares
+
+- supports empty secrets (`b""`)
+
+- supports maximum‑size byte secrets
+
+- detects tampered shares
+
+- detects invalid thresholds (e.g., *t > n*)
+
+- passes the full test suite (14/14)
 
 ---
 
@@ -84,6 +115,36 @@ ci/             Continuous integration configuration
 
 ```
 This structure is optimized for auditability, reproducibility, and cross‑language consistency.
+
+---
+
+## Algorithm Overview
+
+The implementation follows the classical **Shamir’s Secret Sharing** scheme:
+
+- the secret is interpreted as an integer modulo a large prime \( p \),
+- a random polynomial of degree \( t-1 \) is generated,
+- shares are points \((x, f(x))\),
+- reconstruction uses **Lagrange interpolation** at \( x = 0 \).
+
+The project uses a large safe prime suitable for 256‑bit secrets.
+
+---
+
+## Running Tests
+
+The project includes a complete pytest suite covering:
+
+- exact reconstruction,
+- duplicate share detection,
+- tampered share detection,
+- empty and max‑byte secrets,
+- invalid threshold handling.
+
+Run tests with:
+
+```bash
+python -m pytest -v
 
 ---
 
