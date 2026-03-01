@@ -222,3 +222,74 @@ This project is licensed under the GNU General Public License v3.0 (GPL‑3.0).
 See the LICENSE file for the full text.
 
 ---
+
+# ❓ FAQ — Frequently Asked Questions
+
+## What algorithm does this project use to reconstruct the secret?
+
+- The validator uses Lagrange interpolation over a finite field defined by a large prime modulus. Both the Python and JavaScript implementations follow the same mathematical model to  ensure identical results across languages.
+
+## Why does the JavaScript implementation use BigInt instead of Number?
+
+- JavaScript’s Number type is limited to 53 bits of precision, which causes incorrect results when performing modular arithmetic on large integers. BigInt provides full integer precision, making the implementation mathematically correct and consistent with Python.
+
+## Is this project intended for production use?
+
+- The project is designed as a reference validation suite, not a production‑grade cryptographic library. It is ideal for testing, verifying, and comparing Shamir Secret Sharing implementations, but it is not optimized for performance or hardened for production security.
+
+## Does this project implement full Shamir Secret Sharing?
+
+- It implements secret reconstruction and the underlying Lagrange interpolation. It does not implement share generation, because the purpose of the project is validation rather than providing a complete SSS toolkit.
+
+## Can I use my own prime modulus?
+- Yes. The validator works with any sufficiently large prime modulus. The test suite uses a standard 256‑bit prime commonly used in SSS implementations, but you can supply your own.
+
+# Are the Python and JavaScript test suites equivalent?
+
+## Yes. The test suites are unified and include:
+
+- deterministic reconstruction tests
+
+- fuzzing tests
+
+- edge‑case tests
+
+- share permutation tests
+
+- corrupted‑share resistance tests
+
+Both implementations must pass the same scenarios.
+
+# Why were the old repositories archived?
+
+## Three earlier repositories were merged into this unified project to:
+
+- eliminate duplication
+
+- simplify maintenance
+
+- unify licensing
+
+- ensure consistent test coverage
+
+- provide a single authoritative validator
+
+The old repositories remain available for historical reference.
+
+## Can I contribute new tests or improvements?
+
+- Yes. The project is open‑source under GPL‑3.0, and contributions are welcome. You may add new tests, improve implementations, or propose new features through pull requests.
+
+## Does the project support TypeScript?
+
+- The JavaScript implementation is compatible with TypeScript, but it does not include .d.ts type definitions. You may add your own or contribute official typings via pull request.
+
+## Is a command‑line interface (CLI) planned?
+
+- Yes. A CLI tool for quick validation, share checking, and report generation is planned for a future release.
+
+## Can I use this project in commercial software?
+
+Yes, but only under the terms of GPL‑3.0, which requires that derivative works remain open‑source under the same license.
+
+---
