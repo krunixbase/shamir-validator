@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Shamir Secret Sharing — Validation Summary</title>
+<style>
+body { font-family: Arial, sans-serif; line-height: 1.6; max-width: 900px; margin: auto; padding: 20px; }
+h1, h2 { color: #333; }
+code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
+pre { background: #f4f4f4; padding: 10px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<h1>Shamir Secret Sharing — Validation Summary</h1>
+
+<h2>Overview</h2>
+<p>
+This repository provides a deterministic validation suite for <strong>Shamir Secret Sharing (SSS)</strong>.
+The goal is to mathematically and programmatically verify correct reconstruction of a secret
+from a threshold number of shares using Lagrange interpolation.
+</p>
+
+<h2>Validation Scope</h2>
+<ul>
+<li>Polynomial construction with secret as constant term</li>
+<li>Deterministic share generation</li>
+<li>Reconstruction using Lagrange interpolation at x = 0</li>
+<li>Cross-language consistency (Python & JavaScript)</li>
+<li>Masked logging of sensitive values</li>
+</ul>
+
+<h2>Mathematical Basis</h2>
+<p>Given secret S, threshold t, and polynomial:</p>
+
+<pre>
+f(x) = S + a₁x + a₂x² + ... + a₍ₜ₋₁₎x⁽ᵗ⁻¹⁾
+</pre>
+
+<p>Shares:</p>
+
+<pre>
+(xᵢ, yᵢ) where yᵢ = f(xᵢ)
+</pre>
+
+<p>Reconstruction:</p>
+
+<pre>
+S = Σᵢ yᵢ · Πⱼ (xⱼ / (xⱼ - xᵢ)),  j ≠ i
+</pre>
+
+<h2>Implementation Notes</h2>
+<ul>
+<li>Python 3.x and JavaScript reference implementations</li>
+<li>Deterministic RNG for reproducibility</li>
+<li>No plaintext secret logging</li>
+</ul>
+
+<h2>Security Considerations</h2>
+<ul>
+<li>Use GF(p) or GF(2ⁿ) in production</li>
+<li>Use cryptographically secure RNG</li>
+<li>Validate x-coordinates</li>
+<li>Use constant-time operations</li>
+<li>Bind metadata (field, threshold, index, checksum/MAC)</li>
+</ul>
+
+<h2>Conclusion</h2>
+<p>
+This validation suite confirms the mathematical correctness of Shamir Secret Sharing reconstruction
+under deterministic conditions. It serves as a reference implementation for audits, education, and research.
+</p>
+
+</body>
+</html>
