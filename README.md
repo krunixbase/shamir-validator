@@ -13,9 +13,9 @@ The project unifies multiple earlier repositories into a single, coherent struct
 
 ---
 
-## Purpose and Scope
+# Purpose and Scope
 
-Shamir’s Secret Sharing is widely implemented, but real‑world libraries often diverge in:
+## Shamir’s Secret Sharing is widely implemented, but real‑world libraries often diverge in:
 
 - finite‑field arithmetic
 
@@ -31,7 +31,7 @@ Shamir’s Secret Sharing is widely implemented, but real‑world libraries ofte
 
 - resistance to malformed or adversarial shares
 
-Shamir Validator addresses these issues by providing:
+## Shamir Validator addresses these issues by providing:
 
 - reference implementations in Python and JavaScript
 
@@ -87,7 +87,7 @@ This structure is optimized for auditability, reproducibility, and cross‑langu
 
 ---
 
-## Validation Model
+# Validation Model
 
 ## Deterministic Test Vectors
 
@@ -125,7 +125,7 @@ These documents define the expected behavior of any compliant SSS implementation
 
 ---
 
-## Running Tests 
+# Running Tests 
 
 ## Python
 
@@ -170,9 +170,9 @@ These implementations serve as a correctness baseline for other libraries.
 
 ---
 
-## Documentation
+# Documentation
 
-The docs/ directory provides:
+## The docs/ directory provides:
 
 - math-proof.md — formal proof of correctness,
 
@@ -190,7 +190,7 @@ This makes the project suitable for academic, industrial, and security‑critica
 
 ---
 
-## Use Cases
+# Use Cases
 
 - verifying correctness of third‑party SSS libraries,
 
