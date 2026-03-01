@@ -1,32 +1,4 @@
-function modInverse(a, field) {
-    // Modular inverse using extended Euclidean algorithm
-    let t = 0, newT = 1;
-    let r = field, newR = ((a % field) + field) % field;
-
-    while (newR !== 0) {
-        const q = Math.floor(r / newR);
-        [t, newT] = [newT, t - q * newT];
-        [r, newR] = [newR, r - q * newR];
-    }
-
-    if (r > 1) {
-        throw new Error("Element has no modular inverse");
-    }
-
-    if (t < 0) {
-        t += field;
-    }
-
-    return t;
-}
-
 function lagrangeInterpolateZero(points, field) {
-    /*
-     * Reconstructs f(0) using Lagrange interpolation.
-     *
-     * points: array of [x, y]
-     * field: prime modulus
-     */
     let secret = 0n;
 
     for (let i = 0; i < points.length; i++) {
@@ -42,7 +14,7 @@ function lagrangeInterpolateZero(points, field) {
             }
         }
 
-        const invDen = BigInt(modInverse(Number(den), Number(field)));
+        const invDen = modInverseBigInt(den, field);
         const li = (num * invDen) % field;
         secret = (secret + yi * li) % field;
     }
