@@ -1,4 +1,12 @@
 # Shamir Validator
+
+![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
+![Node.js](https://img.shields.io/badge/Node.js-18%2B-green)
+![Tests](https://img.shields.io/badge/Tests-Python%20%2B%20JavaScript-success)
+![Status](https://img.shields.io/badge/Project-Unified%20Release%20v1.0.0-orange)
+![Topics](https://img.shields.io/badge/Topics-SSS%2C%20Cryptography%2C%20Validator-lightgrey)
+
 Shamir Validator is a deterministic, cross‑language validation framework for implementations of Shamir’s Secret Sharing (SSS). It provides reference implementations, mathematical modules, deterministic test vectors, cross‑language test suites, fuzzing, and formal documentation to ensure that SSS implementations behave correctly, consistently, and securely across environments.
 
 The project unifies multiple earlier repositories into a single, coherent structure designed for cryptographic audits, reproducible research, and high‑assurance engineering.
