@@ -1,155 +1,211 @@
+# Shamir Validator
 
+Shamir Validator is a deterministic, cross‑language validation framework for implementations of Shamir’s Secret Sharing (SSS). It provides reference implementations, mathematical modules, deterministic test vectors, cross‑language test suites, fuzzing, and formal documentation to ensure that SSS implementations behave correctly, consistently, and securely across environments.
 
+The project unifies multiple earlier repositories into a single, coherent structure designed for cryptographic audits, reproducible research, and high‑assurance engineering.
 
+---
 
+## Purpose and Scope
 
+Shamir’s Secret Sharing is widely implemented, but real‑world libraries often diverge in:
 
+- finite‑field arithmetic,
 
+- polynomial interpolation,
 
+- share generation,
 
+- threshold handling,
 
+- edge‑case behavior,
 
+- reconstruction logic,
 
+- resistance to malformed or adversarial shares.
 
-# shamir-validator
+Shamir Validator addresses these issues by providing:
 
-Unified validation suite for Shamir Secret Sharing (SSS), threshold cryptography, deterministic reconstruction, and mathematical correctness verification. This repository consolidates all validation logic from the Krunixbase ecosystem into a single, auditable, reproducible framework.
+- reference implementations in Python and JavaScript,
 
-## Purpose
+- deterministic test vectors for reproducibility,
 
-The goal of `shamir-validator` is to provide a reference‑grade validation environment for:
+- cross‑language validation to ensure equivalence,
 
-- correctness of Shamir Secret Sharing implementations,
-- deterministic reconstruction behavior,
-- polynomial and field arithmetic validation,
-- encoding and share‑structure consistency,
-- cross‑language interoperability,
-- adversarial and fuzzing‑based edge‑case analysis,
-- mathematical proofs and formal verification.
+- fuzzing and edge‑case suites,
 
-This repository is intended for:
+- formal mathematical documentation,
 
-- security auditors,
-- cryptography engineers,
-- researchers,
-- developers implementing SSS,
-- bug bounty participants,
-- institutions requiring formal verification.
+- auditable test reports.
 
-## Merged Repositories
-
-This repository consolidates the following validation suites:
-
-- **shamir-sss-validation-suite**
-- **shamir-sss-validation**
-- **shamir-validation-suite**
-
-All historical commits have been preserved for audit and research purposes.
+The goal is to make SSS implementations verifiable, predictable, and interoperable.
 
 ---
 
 ## Repository Structure
 
 ```
-shamir-validator/
-├── core/
-├── suites/
-├── vectors/
-├── proofs/
-├── docs/
-├── REFERENCE.md
-└── README.md
+
+core/           Reference implementations and mathematical modules
+  ├── python/       Python implementation of SSS and validation logic
+  ├── javascript/   JavaScript implementation of SSS and validation logic
+  ├── encoding/     Encoding and field utilities
+  ├── polynomial/   Polynomial operations in GF(p)
+  └── reconstruction/  Secret reconstruction logic
+
+tests/          Deterministic and adversarial test suites
+  ├── python/       Python unit tests
+  └── js/           JavaScript unit tests and validation tests
+
+suites/         High‑level validation suites
+  ├── deterministic/     Deterministic vector tests
+  ├── fuzzing/           Deterministic fuzzing
+  ├── cross-language/    Python ↔ JS equivalence tests
+  └── mathematical/      Tests aligned with formal proofs
+
+docs/           Documentation and audit materials
+  ├── math-proof.md
+  ├── threat-model.md
+  ├── assumptions.md
+  ├── validation-report.md
+  ├── api-stability.md
+  └── audit/AUDIT.md
+
 ```
 
-### core/
-Deterministic, mathematically verifiable validation logic for polynomial operations, reconstruction, and encoding.
+vectors/        Deterministic test vectors
 
-### suites/
-Modular validation suites for deterministic testing, fuzzing, cross‑language validation, and mathematical proofing.
+reports/        Validation and audit reports
 
-### vectors/
-Canonical deterministic test vectors for SSS, threshold reconstruction, encoding, and field arithmetic.
+scripts/        Utility scripts (summary generation, HTML reports)
 
-### proofs/
-Mathematical proofs, invariants, and formal verification notes.
+ci/             Continuous integration configuration
 
-### docs/
-Documentation for architecture, cryptographic assumptions, validation workflows, and audit‑grade reproducibility.
+This structure is optimized for auditability, reproducibility, and cross‑language consistency.
 
 ---
 
-## Mathematical Proof of Reconstruction
+## Validation Model
 
-Shamir Secret Sharing is based on Lagrange interpolation at x=0.
+## Deterministic Test Vectors
 
-Given secret \(S \in \mathbb{F}\), threshold \(t\), and polynomial:
+All tests use deterministic RNG to ensure:
 
+- reproducible results,
 
+- cross‑language consistency,
 
-\[
-f(x) = S + a_1 x + a_2 x^2 + \dots + a_{t-1} x^{t-1}
-\]
+- stable audit trails.
 
+## Cross‑Language Equivalence
 
+Every operation is validated in both:
 
-Shares: \((x_i, y_i)\) with \(y_i = f(x_i)\).
+- core/python/
 
-Reconstruction at \(x=0\) uses Lagrange interpolation:
+- core/javascript/
 
+and results are compared to guarantee identical behavior.
 
+## Mathematical Correctness
 
-\[
-S = \sum_{i=1}^{t} y_i \cdot \prod_{\substack{j=1 \\ j \neq i}}^{t} \frac{-x_j}{x_i - x_j}
-\]
+The docs/ directory contains:
 
+- formal proofs of correctness,
 
+- threat models,
 
-## Implementation
+- assumptions and constraints,
 
-Implemented in Python 3.x and JavaScript with deterministic RNG.
+- validation methodology.
 
-Deterministic RNG is used exclusively for reproducible validation and MUST NOT be used in production environments.
-
----
-
-## CI/CD and Reports
-
-Automated validation runs across multiple seeds: [1337, 42, 2025, 9001, 314159].  
-Reports are generated in Markdown (`summary.md`) and HTML (`summary.html`).
+These documents define the expected behavior of any compliant SSS implementation.
 
 ---
 
-## 💰 Research Bounty (Optional)
+## Running Tests 
 
-Please use the following Bitcoin address for bounty distribution:  
-**bc1q4fv9w2pwpgqyp0gzt20c6n6m4mxs9yga2qgm9f**
+## Python
 
-This address is provided for voluntary research support only.
+```
+cd tests/python
+pytest -q
+```
+
+## JavaScript
+
+```
+npm install
+npm test
+```
+
+## Cross‑Language Validation
+
+Cross‑language tests live in:
+
+suites/cross-language/
+
+They compare Python and JavaScript outputs for identical inputs.
 
 ---
 
-## Security Recommendations
+## Reference Implementations
 
-- Define finite field explicitly (GF(p) or GF(2^n))
-- Enforce uniqueness and validity of x-coordinates
-- Use cryptographically secure RNG for coefficients
-- Add metadata (field, threshold, index, checksum/MAC) to shares
-- Implement constant-time field operations
+The core/ directory contains clean, auditable implementations of:
+
+- finite‑field arithmetic in GF(p),
+
+- polynomial evaluation and interpolation,
+
+- share generation,
+
+- secret reconstruction,
+
+- validation logic.
+
+These implementations serve as a correctness baseline for other libraries.
+
+---
+
+## Documentation
+
+The docs/ directory provides:
+
+- math-proof.md — formal proof of correctness,
+
+- threat-model.md — adversarial considerations,
+
+- assumptions.md — cryptographic assumptions,
+
+- validation-report.md — methodology and results,
+
+- api-stability.md — API guarantees,
+
+- audit/AUDIT.md — audit‑grade documentation.
+
+This makes the project suitable for academic, industrial, and security‑critical use.
+
+---
+
+## Use Cases
+
+- verifying correctness of third‑party SSS libraries,
+
+- ensuring cross‑language interoperability,
+
+- generating deterministic test vectors,
+
+- validating edge‑case behavior,
+
+- performing fuzzing with reproducible seeds,
+
+- supporting cryptographic audits and formal verification.
 
 ---
 
 ## License
 
-This project is licensed under the **GNU General Public License v3.0 (GPL‑3.0)** for source code  
-and **CC‑BY 4.0** for documentation.
-
-See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
+See LICENSE for details.
 
 ---
-
-## Contact
-
-GitHub: https://github.com/krunixbase  
-Email: shamircrackerlab@gmail.com  
-X (Twitter): https://twitter.com/shamircrackerlab
-
