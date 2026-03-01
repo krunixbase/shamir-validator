@@ -244,9 +244,9 @@ See the LICENSE file for the full text.
 ## Can I use my own prime modulus?
 - Yes. The validator works with any sufficiently large prime modulus. The test suite uses a standard 256‑bit prime commonly used in SSS implementations, but you can supply your own.
 
-# Are the Python and JavaScript test suites equivalent?
+## Are the Python and JavaScript test suites equivalent?
 
-## Yes. The test suites are unified and include:
+Yes. The test suites are unified and include:
 
 - deterministic reconstruction tests
 
@@ -260,9 +260,9 @@ See the LICENSE file for the full text.
 
 Both implementations must pass the same scenarios.
 
-# Why were the old repositories archived?
+## Why were the old repositories archived?
 
-## Three earlier repositories were merged into this unified project to:
+Three earlier repositories were merged into this unified project to:
 
 - eliminate duplication
 
