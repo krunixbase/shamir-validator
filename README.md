@@ -1,5 +1,4 @@
 # Shamir Validator
-
 Shamir Validator is a deterministic, cross‑language validation framework for implementations of Shamir’s Secret Sharing (SSS). It provides reference implementations, mathematical modules, deterministic test vectors, cross‑language test suites, fuzzing, and formal documentation to ensure that SSS implementations behave correctly, consistently, and securely across environments.
 
 The project unifies multiple earlier repositories into a single, coherent structure designed for cryptographic audits, reproducible research, and high‑assurance engineering.
@@ -10,33 +9,33 @@ The project unifies multiple earlier repositories into a single, coherent struct
 
 Shamir’s Secret Sharing is widely implemented, but real‑world libraries often diverge in:
 
-- finite‑field arithmetic,
+- finite‑field arithmetic
 
-- polynomial interpolation,
+- polynomial interpolation
 
-- share generation,
+- share generation
 
-- threshold handling,
+- threshold handling
 
-- edge‑case behavior,
+- edge‑case behavior
 
-- reconstruction logic,
+- reconstruction logic
 
-- resistance to malformed or adversarial shares.
+- resistance to malformed or adversarial shares
 
 Shamir Validator addresses these issues by providing:
 
-- reference implementations in Python and JavaScript,
+- reference implementations in Python and JavaScript
 
-- deterministic test vectors for reproducibility,
+- deterministic test vectors for reproducibility
 
-- cross‑language validation to ensure equivalence,
+- cross‑language validation to ensure equivalence
 
-- fuzzing and edge‑case suites,
+- fuzzing and edge‑case suites
 
-- formal mathematical documentation,
+- formal mathematical documentation
 
-- auditable test reports.
+- auditable test reports
 
 The goal is to make SSS implementations verifiable, predictable, and interoperable.
 
@@ -45,7 +44,6 @@ The goal is to make SSS implementations verifiable, predictable, and interoperab
 ## Repository Structure
 
 ```
-
 core/           Reference implementations and mathematical modules
   ├── python/       Python implementation of SSS and validation logic
   ├── javascript/   JavaScript implementation of SSS and validation logic
@@ -71,16 +69,12 @@ docs/           Documentation and audit materials
   ├── api-stability.md
   └── audit/AUDIT.md
 
+vectors/        Deterministic test vectors  
+reports/        Validation and audit reports  
+scripts/        Utility scripts (summary generation, HTML reports)  
+ci/             Continuous integration configuration  
+
 ```
-
-vectors/        Deterministic test vectors
-
-reports/        Validation and audit reports
-
-scripts/        Utility scripts (summary generation, HTML reports)
-
-ci/             Continuous integration configuration
-
 This structure is optimized for auditability, reproducibility, and cross‑language consistency.
 
 ---
@@ -143,8 +137,9 @@ npm test
 
 Cross‑language tests live in:
 
+```
 suites/cross-language/
-
+```
 They compare Python and JavaScript outputs for identical inputs.
 
 ---
