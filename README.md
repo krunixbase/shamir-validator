@@ -198,6 +198,16 @@ This makes the project suitable for academic, industrial, and security‑critica
 
 ---
 
+## Legacy repositories
+
+This project consolidates the following archived repositories:
+
+- https://github.com/krunixbase/shamir-sss-validation-suite
+- https://github.com/krunixbase/shamir-validation-suite
+- https://github.com/krunixbase/shamir-ss-validation
+
+---
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 (GPL‑3.0).
