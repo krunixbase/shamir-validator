@@ -200,7 +200,7 @@ This makes the project suitable for academic, industrial, and security‑critica
 
 ## License
 
-This project is licensed under the MIT License.
-See LICENSE for details.
+This project is licensed under the GNU General Public License v3.0 (GPL‑3.0).
+See the LICENSE file for the full text.
 
 ---
