@@ -152,9 +152,9 @@ They compare Python and JavaScript outputs for identical inputs.
 
 ---
 
-## Reference Implementations
+# Reference Implementations
 
-The core/ directory contains clean, auditable implementations of:
+## The core/ directory contains clean, auditable implementations of:
 
 - finite‑field arithmetic in GF(p),
 
