@@ -1,0 +1,35 @@
+name: Validation Suite
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validation:
+    runs-on: ubuntu-latest
+
+   
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: |
+          if [ -f package.json ]; then
+            npm install
+          fi
+
+      - name: Run validation tests
+        run: |
+          if [ -f package.json ]; then
+            npm test
+          else
+            echo "No package.json found — skipping test execution."
+          fi
