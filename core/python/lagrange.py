@@ -1,7 +1,3 @@
-# This file is part of Shamir Validator.
-# Copyright (...)
-# (nagłówek zostaje)
-
 def lagrange_at_zero(points, p):
     secret = 0
     for i, (xi, yi) in enumerate(points):
